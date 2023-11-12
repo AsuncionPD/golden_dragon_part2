@@ -1,0 +1,29 @@
+@import url(./abstracts/vars.css);
+
+@import url(./base/base.css);
+@import url(./base/typography.css);
+
+@import url(./layaout/header.css);
+@import url(./layaout/grid.css);
+@import url(./layaout/footer.css);
+@import url(./layaout/forms.css);
+@import url(./layaout/navigation.css);
+
+@import url(./components/components.css);
+
+@media (max-width: 767.98px) {
+
+    .container-width{
+        width: 85vw;
+    }
+
+    .dish-container {
+        grid-template-columns: 1fr;
+    }
+    
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+}

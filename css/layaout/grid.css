@@ -1,0 +1,59 @@
+.container {
+    text-align: center;
+    margin-top: 5rem;
+}
+
+.categories-container {
+    display: grid;
+    width: 85vw;
+    margin: 2rem auto;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.category {
+    border: 2px solid var(--clr-gold);
+    display: grid;
+    background: var(--clr-white);
+    border-radius: 2rem;
+    text-align: center;
+    justify-content: center;
+}
+
+.dishes-container {
+    display: grid;
+    width: 85vw;
+    margin: 2rem auto;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.container-width{
+    width: 41.7vw;
+}
+
+.dish {
+    border: 2px solid var(--clr-gold);
+    display: grid;
+    background: none;
+    border-radius: 2rem;
+    text-align: left;
+}
+
+/*specific dish info*/
+.dish-container {
+    display: grid;
+    margin: 15rem auto;
+    margin-bottom: 0;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    width: 85vw;
+}
+
+.dish-information {
+    max-width: 100%;
+    display: grid;
+    margin: auto;
+    align-items: center;
+    position: relative;
+}

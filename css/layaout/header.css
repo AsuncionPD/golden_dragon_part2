@@ -1,0 +1,43 @@
+/*section of logo*/
+.top-page {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 12rem;
+    background: var(--clr-wine);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-logo{
+    width: 10rem;
+    height: 10rem;
+    background: url(../../imgs/logo-dragon.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.hero-container {
+    display: grid;
+    color: var(--clr-white);
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    width: 100%; 
+    height: 28rem;
+}
+
+.home-page-bg{
+    background: url(../../imgs/homepage-bg.png);
+    background-position: center;
+    background-size: cover;
+}
+
+.starters-bg{
+    background: url(../../imgs/starter-bg.png);
+    background-position: center;
+    background-size: cover;
+}

@@ -1,0 +1,22 @@
+:root {
+   /*font-family*/
+   --ff-main: 'Mooli', sans-serif;
+   --ff-second: 'Roboto', sans-serif;
+
+   /*fonts size*/
+   --fs-xl: 4.5rem;
+   --fs-lg: 2.5rem;
+   --fs-md: 1.25rem;
+   --fs-nm: 1.rem;
+
+   /* fotns weight*/
+   --fw-bk: 900;
+   --fw-md: 500;
+   --fw-rg: 400;
+
+   /* colors */
+   --clr-wine: #741013;
+   --clr-gold: #D4B35D;
+   --clr-black: #000000;
+   --clr-white: #ffffff;
+}

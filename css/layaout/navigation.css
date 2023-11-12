@@ -1,0 +1,108 @@
+/*top nav*/
+.top-nav {
+    align-items: center;
+    display: flex;
+    font-weight: var(--fw-rg);
+    justify-content: center;
+    margin-top: 12.3rem;
+}
+
+.nav-list {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    gap: 1rem;
+    list-style-type: none;
+}
+
+.nav-list-link {
+    text-decoration: none;
+    color: var(--clr-black);
+    font-size: var(--fs-md);
+}
+/*top nav*/
+
+@media (max-width: 767.98px){
+  
+    .top-nav{
+      margin-top: 11.9rem;
+    }
+
+    .mobile-btn{
+        position: fixed;
+        top: 3rem;
+        right: 2rem;
+        width: 1.5rem;
+        height: 1.5rem;
+        z-index: 3;
+    }
+
+    .mobile-btn > span,
+    .mobile-btn > span::before,
+    .mobile-btn > span::after{
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: .2rem;
+        background: var(--clr-gold);
+        transition-duration: .25s;
+    }
+
+    .mobile-btn > span::before{
+        content: '';
+        top: -.5rem;
+    }
+
+    .mobile-btn > span::after{
+        content: '';
+        top: +.5rem;
+    }
+
+    /*mobile check*/
+    .mobile-check{
+        opacity: 0;
+        position: fixed;
+        top: 3.5rem;
+        right: 2.25rem;
+        z-index: 4;
+    }
+
+    .mobile-check:checked + .mobile-btn > span{
+        transform: rotate(45deg);
+    }
+
+    .mobile-check:checked + .mobile-btn > span::before{
+        top: 0;
+        transform: rotate(0deg);
+    }
+
+    .mobile-check:checked + .mobile-btn > span::after{
+        top: 0;
+        transform: rotate(90deg);
+    }
+  
+    .mobile-check:checked ~ .nav-list{
+
+        right: 0;
+    }
+
+    .nav-list{
+      display: grid;
+      position: fixed;
+      margin: 0;
+      right: -20rem;
+      width: 50%;
+      height: 100vh;
+      background: var(--clr-black);
+      align-content: center;
+      text-align:left;
+      padding-left: 2rem;
+      z-index: 2;
+      transition: right .25s;
+    }
+
+    .nav-list-link{
+        color: var(--clr-white);
+        font-size: var(--fs-nm);
+    }
+}

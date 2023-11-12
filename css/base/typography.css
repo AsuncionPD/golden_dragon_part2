@@ -1,0 +1,42 @@
+.hero-title {
+    font-size: clamp(var(--fs-lg), 3.5rem, var(--fs-xl));
+    font-weight: var(--fw-bk);
+    margin: auto;
+}
+
+.hero-subtitle {
+    font-size: var(--fs-md);
+}
+
+.font-options {
+    font-size: var(--fs-md);
+    font-weight: var(--fw-md);
+}
+
+.featured-dishes-title {
+    margin-bottom: 3rem;
+    font-size: var(--fs-lg);
+}
+
+/*dish info*/
+.dish-title {
+    margin-top: 0.5rem;
+    font-weight: var(--fw-md);
+    font-size: var(--fs-md);
+}
+
+.dish-description {
+    font-size: var(--fs-nm);
+    text-align: justify;
+    margin-bottom: 1.5rem;
+}
+
+.price {
+    display: flex;
+    float: right;
+}
+
+.padding {
+    padding: 1rem 1rem;
+}
+/*dish info*/
