@@ -75,7 +75,7 @@
                         <button class="btn-sign-in" type="submit">Sign In</button>
 
                         <div class="login-register">
-                            <p>Don't have an account? <a href="#" class="register-link">Sing Up</a></p>
+                            <p>Don't have an account? <a href="javascript:void(0)" class="register-link">Sing Up</a></p>
                         </div>
                     </form>
                 </div>
@@ -109,7 +109,7 @@
                         <button class="btn-sign-in" type="submit">Sign Up</button>
 
                         <div class="login-register">
-                            <p>Already have an account? <a href="#" class="login-link">Sing In</a></p>
+                            <p>Already have an account? <a href="javascript:void(0)" class="login-link">Sing In</a></p>
                         </div>
                     </form>
                 </div>
@@ -122,7 +122,7 @@
         <div class="footer-content"></div>
     </footer>
 
-   <!--<script src="js/forms.js"></script>-->
+   <script src="js/forms.js"></script>
 
 </body>
 
