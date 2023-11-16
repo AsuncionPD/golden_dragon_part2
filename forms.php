@@ -53,18 +53,18 @@
 
         <div class="logreg-box">
             <div class="form-box login">
-                <form action="#">
-                        <h2>Sign In</h2>
+                <form method="post" action="forms.php">
+                        <h2>Login</h2>
                         <div class="input-box">
-                            <span class="icon"><i class='bx bx-envelope'></i></span>
-                            <input id="email" type="email" required>
-                            <label for="email">Email</label>
+                            <span class="icon"><i class='bx bxs-user'></i></i></span>
+                            <input id="username" type="text" name="username" required>
+                            <label for="username">Username</label>
                         </div>
 
                         <div class="input-box">
                             <span class="icon"><i class='bx bxs-lock-alt'></i></span>
-                            <input id="pwd" type="password" required>
-                            <label for="pwd">Password</label>
+                            <input id="password" type="password" name="password" required>
+                            <label for="password">Password</label>
                         </div>
 
                         <div class="remember-forgot">
@@ -72,49 +72,53 @@
                             <a href="#">Forgot password?</a>
                         </div>
 
-                        <button class="btn-sign-in" type="submit">Sign In</button>
+                        <input class="btn-sign-in" type="submit" value="Login">
 
                         <div class="login-register">
-                            <p>Don't have an account? <a href="javascript:void(0)" class="register-link">Sing Up</a></p>
+                            <p>Don't have an account? <a href="javascript:void(0)" class="register-link">Sing In</a></p>
                         </div>
+
+                        <input type="hidden" name="login" value="1">
                     </form>
                 </div>
 
                 <div class="form-box register">
-                <form action="#">
-                        <h2>Sign Up</h2>
+                    <form method="post" action="forms.php">
+                        <h2>Sign In</h2>
 
                         <div class="input-box">
-                            <span class="icon"><i class='bx bxs-user'></i></span>
-                            <input id="email" type="text" required>
-                            <label for="email">Name</label>
+                            <span class="icon"><i class='bx bxs-user'></i></i></span>
+                            <input id="username" type="text" name="username" required>
+                            <label for="username">Username</label>
                         </div>
 
                         <div class="input-box">
                             <span class="icon"><i class='bx bx-envelope'></i></span>
-                            <input id="email" type="email" required>
+                            <input id="email" type="email" name="email" required>
                             <label for="email">Email</label>
                         </div>
 
                         <div class="input-box">
                             <span class="icon"><i class='bx bxs-lock-alt'></i></span>
-                            <input id="pwd" type="password" required>
-                            <label for="pwd">Password</label>
+                            <input id="password" type="password" name="password" required>
+                            <label for="password">Password</label>
                         </div>
 
                         <div class="remember-forgot">
                             <label><input type="checkbox">I agree to the terms & conditions</label>
                         </div>
 
-                        <button class="btn-sign-in" type="submit">Sign Up</button>
+                        <input class="btn-sign-in" type="submit" value="Register">
 
                         <div class="login-register">
-                            <p>Already have an account? <a href="javascript:void(0)" class="login-link">Sing In</a></p>
+                            <p>Already have an account? <a href="javascript:void(0)" class="login-link">Login</a></p>
                         </div>
+
+                        <input type="hidden" name="register" value="1">
                     </form>
                 </div>
-            </div>
 
+            </div>
          </div>
         </div>
     </main>
