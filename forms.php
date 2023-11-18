@@ -1,3 +1,57 @@
+<?php
+
+require_once 'backend/database.php';
+    $message = "";
+
+    if($_POST){
+
+        if(isset($_POST["login"])){
+
+            $user = $database->select("tb_users","*",[
+                "usr"=> $_POST["username"]
+            ]);
+
+            if(count($user) > 0){
+                //validate password
+                if(password_verify($_POST["password"], $user[0]["pwd"])){
+                    session_start();
+                    $_SESSION["isLoggedIn"] = true;
+                    $_SESSION["fullname"] = $user[0]["fullname"];
+                    header("location: index.php");
+                }else{
+                    $message = "wrong username or password";
+                }
+            }else{
+                $message = "wrong username or password";
+            }
+
+        }
+
+        if(isset($_POST["register"])){
+            //validate if user already registered
+            $validateUsername = $database->select("tb_users","*",[
+                "usr"=>$_POST["username"]
+            ]);
+
+            if(count($validateUsername) > 0){
+                $message = "This username is already registered";
+            }else{
+
+                $pass = password_hash($_POST["password"], PASSWORD_DEFAULT, ['cost' => 12]);
+
+                $database->insert("tb_users",[
+                    "fullname"=> $_POST["fullname"],
+                    "usr"=> $_POST["username"],
+                    "pwd"=> $pass,
+                    "email"=> $_POST["email"]
+                ]);
+
+            }
+        }
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -77,7 +131,7 @@
                         <div class="login-register">
                             <p>Don't have an account? <a href="javascript:void(0)" class="register-link">Sing In</a></p>
                         </div>
-
+                        <p><?php echo $message; ?></p>
                         <input type="hidden" name="login" value="1">
                     </form>
                 </div>
@@ -119,7 +173,7 @@
                         <div class="login-register">
                             <p>Already have an account? <a href="javascript:void(0)" class="login-link">Login</a></p>
                         </div>
-
+                        <p><?php echo $message; ?></p>
                         <input type="hidden" name="register" value="1">
                     </form>
                 </div>
