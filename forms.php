@@ -56,7 +56,7 @@
                 <form method="post" action="forms.php">
                         <h2>Login</h2>
                         <div class="input-box">
-                            <span class="icon"><i class='bx bxs-user'></i></i></span>
+                            <span class="icon"><i class='bx bxs-user'></i></span>
                             <input id="username" type="text" name="username" required>
                             <label for="username">Username</label>
                         </div>
@@ -87,7 +87,13 @@
                         <h2>Sign In</h2>
 
                         <div class="input-box">
-                            <span class="icon"><i class='bx bxs-user'></i></i></span>
+                            <span class="icon"><i class='bx bxs-user-detail'></i></span>
+                            <input id="fullname" type="text" name="fullname" required>
+                            <label for="fullname">Fullname</label>
+                        </div>
+
+                        <div class="input-box">
+                            <span class="icon"><i class='bx bxs-user'></i></span>
                             <input id="username" type="text" name="username" required>
                             <label for="username">Username</label>
                         </div>

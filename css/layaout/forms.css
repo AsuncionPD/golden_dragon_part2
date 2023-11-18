@@ -4,8 +4,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 75%;
-    height: 550px;
+    width: 80%; 
+    height: 620px;
     background: url(../../imgs/login-background.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -66,12 +66,12 @@
 }
 
 .logreg-box.active .form-box.login{
-    transform: translateX(430px);
+    transform: translateX(600px);
     transition-delay: 0s;
 }
 
 .logreg-box .form-box.register{
-    transform: translateX(430px);
+    transform: translateX(600px);
     transition: transform .6s ease;
     transition-delay: 0s;
 }
