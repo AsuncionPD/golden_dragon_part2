@@ -18,8 +18,15 @@
 .nav-list-link {
     text-decoration: none;
     color: var(--clr-black);
-    font-size: var(--fs-md);
+    font-size:
+     var(--fs-md);
 }
+
+
+.mobile-check{
+    opacity: 0;
+}
+
 /*top nav*/
 
 @media (max-width: 767.98px){

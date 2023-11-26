@@ -41,3 +41,9 @@
     background-position: center;
     background-size: cover;
 }
+
+/*Hacer que funcione en index icon user*/
+.login-icon{
+    font-size: 2rem; 
+    color: var(--clr-wine); 
+}

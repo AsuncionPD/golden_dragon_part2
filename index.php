@@ -11,6 +11,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mooli&display=swap" rel="stylesheet">
     <!-- google fonts -->
+    <!-- icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- icons -->
     <link rel="stylesheet" href="./css/main.css">
 
 </head>
@@ -31,11 +34,20 @@
             <!--movile nav btn-->
 
             <ul class="nav-list">
+                <?php 
+                session_start();
+                if(isset($_SESSION["isLoggedIn"])){
+                    echo "<span class='login-icon'><i class='bx bxs-user-circle'></i></span>";
+                    echo "<li><a class='nav-list-link' href='./profile.php'>".$_SESSION["fullname"]."</a></li>";
+                    echo "<li><a class='nav-list-link' href='./backend/logout.php'>Logout</a></li>";
+                }else{
+                    echo "<li><a class='nav-list-link' href='./forms.php'>Login</a></li>";
+                }
+                ?>
                 <li><a class="nav-list-link" href="#">Home</a></li>
                 <li><a class="nav-list-link" href="#">About</a></li>
                 <li><a class="nav-list-link" href="#">Menu</a></li>
-                <li><a class="nav-list-link" href="#">Contact</a></li>
-                <li><a class="nav-list-link" href="#">Login</a></li>
+                <li><a class="nav-list-link" href="#">Contact us</a></li>
             </ul>
         </nav>
         <section class="hero-container home-page-bg">
