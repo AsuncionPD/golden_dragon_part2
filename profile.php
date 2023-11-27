@@ -53,72 +53,70 @@
         <div class="profile-container">
                 <h1>User Profile</h1>
                 <div class="info-box">
-                    <div class="col-md-3 pt-0">
-                        <div class="list-group">
-                            <a class="list-group-item"
-                            href="#general">General</a>
-                            <a class="list-group-item"
-                            href="#change-password">Change password</a>
-                            </div>
+                    <div class="list-group">
+                        <a class="list-group-item general-link"
+                        href="javascript:void(0)">General</a>
+                        <a class="list-group-item change-password-link"
+                        href="javascript:void(0)">Change password</a>
                     </div>
-                    <div class="col-md-9">
-                        <div class="tab-content">
-                            <div class="form-box" id="general">
-                                <form method="post" action="profile.php">
-                                    <div class="input-box">
-                                        <span class="icon"><i class='bx bxs-user-detail'></i></span>
-                                        <input id="fullname" type="text" name="fullname" value="fullname" required>
-                                        <label for="fullname">Fullname</label>
-                                    </div>
+                    <div class="tab-content">
+                        <div class="form-box general" id="general">
+                            <form method="post" action="profile.php">
+                                <div class="input-box">
+                                    <span class="icon"><i class='bx bxs-user-detail'></i></span>
+                                    <input id="fullname" type="text" name="fullname" value="fullname" required>
+                                    <label for="fullname">Fullname</label>
+                                </div>
 
-                                    <div class="input-box"> 
-                                        <span class="icon"><i class='bx bxs-user'></i></span>
-                                        <input id="username" type="text" name="username" value="username" required>
-                                        <label for="username">Username</label>
-                                    </div>
+                                <div class="input-box"> 
+                                    <span class="icon"><i class='bx bxs-user'></i></span>
+                                    <input id="username" type="text" name="username" value="username" required>
+                                    <label for="username">Username</label>
+                                </div>
 
-                                    <div class="input-box"> 
-                                        <span class="icon"><i class='bx bx-envelope'></i></span>
-                                        <input id="email" type="text" name="email" value="email" required>
-                                        <label for="email">Email</label>
-                                    </div>
+                                <div class="input-box"> 
+                                    <span class="icon"><i class='bx bx-envelope'></i></span>
+                                    <input id="email" type="text" name="email" value="email" required>
+                                    <label for="email">Email</label>
+                                </div>
 
-                                    <input class="btn-sign-in" type="submit" value="Save Changes">
-                                </form>
-                            </div>
+                                <input class="btn-sign-in" type="submit" value="Save Changes">
+                            </form>
+                        </div>
 
-                            <!--<div class="form-box" id="change-password">
-                                <form method="post" action="profile.php">
-                                    <div class="input-box">
-                                        <span class="icon"><i class='bx bxs-lock-alt'></i></span>
-                                        <input id="current-password" type="password" name="current-password" required>
-                                        <label for="current-password">Current Password</label>
-                                    </div>
+                        <div class="form-box change-password" id="change-password">
+                            <form method="post" action="profile.php">
+                                <div class="input-box">
+                                    <span class="icon"><i class='bx bxs-lock-alt'></i></span>
+                                    <input id="current-password" type="password" name="current-password" required>
+                                    <label for="current-password">Current Password</label>
+                                </div>
 
-                                    <div class="input-box"> 
-                                        <span class="icon"><i class='bx bxs-lock-open-alt'></i></span>
-                                        <input id="new-password" type="password" name="new-password" required>
-                                        <label for="new-password">New Password</label>
-                                    </div>
+                                <div class="input-box"> 
+                                    <span class="icon"><i class='bx bxs-lock-open-alt'></i></span>
+                                    <input id="new-password" type="password" name="new-password" required>
+                                    <label for="new-password">New Password</label>
+                                </div>
 
-                                    <div class="input-box"> 
-                                        <span class="icon"><i class='bx bx-lock-open-alt'></i></span>
-                                        <input id="confirm-new-password" type="password" name="confirm-new-password" required>
-                                        <label for="confirm-new-password">Confirm New Password</label>
-                                    </div>
+                                <div class="input-box"> 
+                                    <span class="icon"><i class='bx bx-lock-open-alt'></i></span>
+                                    <input id="confirm-new-password" type="password" name="confirm-new-password" required>
+                                    <label for="confirm-new-password">Confirm New Password</label>
+                                </div>
 
-                                    <input class="btn-sign-in" type="submit" value="Change Password">
-                                </form>
-                            </div>-->
-
-                        </div> 
+                                <input class="btn-sign-in" type="submit" value="Change Password">
+                            </form>
+                        </div>
                     </div> 
-
-        </div>
+                </div>
+         </div>
     </main> 
     <footer class="footer">
         <div class="footer-content"></div>
     </footer>
+
+    <script src="js/profile.js"></script>
+
 </body>
 
 </html>

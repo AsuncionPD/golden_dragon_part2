@@ -14,7 +14,7 @@
     margin-top: 2px;
 }
 
-/*ver si se tiene que borrar*/
+/*see if you need to delete it*/
 .login-container .text-content{
     position: absolute;
     top: 0;
@@ -195,7 +195,6 @@
     height: 620px;
     transform: translate(-50%, -50%);
     background: url(../../imgs/user-profile-bg.jpg);
-    /*background-color: var(--clr-wine);*/
     background-size: cover;
     background-position: center;
     border-radius: 10px;
@@ -213,7 +212,6 @@
     position: relative;
     display: flex;
     justify-content: center;
-    /*align-items: center;*/
     backdrop-filter: blur(10px);
     width: 80%;
     height: 400px;
@@ -227,12 +225,43 @@
 }
 
 .list-group-item{
+    text-decoration: none;
     padding: 1.5rem;
     color: white;
 }
 
+.list-group-item:hover{
+    text-decoration: underline;
+}
+
 .tab-content{
+    display: flex;
     padding: 2rem 5rem;
+    height: 100%;
+    width: 350px;
+    overflow: hidden;
+}
+
+.tab-content .form-box.general{
+    transform: translateX(0);
+    transition: transform .6s ease;
+    transition-delay: .7s;
+}
+
+.tab-content.active .form-box.general{
+    transform: translateX(600px);
+    transition-delay: 0s;
+}
+
+.tab-content .form-box.change-password{
+    transform: translateX(600px);
+    transition: transform .6s ease;
+    transition-delay: 0s;
+}
+
+.tab-content.active .form-box.change-password{
+    transform: translateX(-340px);
+    transition-delay: .7s;
 }
 
 /*profile*/
