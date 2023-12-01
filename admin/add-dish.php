@@ -38,7 +38,9 @@ if ($_POST) {
                 "id_category_people" => $_POST["people_category"],
                 "id_dish_category" => $_POST["dish_category"],
                 "dish_name" => $_POST["dish_name"],
+                "dish_name_chi" => $_POST["dish_name_chi"],
                 "dish_description" => $_POST["dish_description"],
+                "dish_description_chi" => $_POST["dish_description_chi"],
                 "dish_image" => $img,
                 "dish_price" => $_POST["dish_price"],
             ]);
@@ -79,6 +81,11 @@ if ($_POST) {
             </div>
 
             <div class="form-items">
+                <label for="dish_name_chi">Dish Name Chinese</label>
+                <input id="dish_name_chi" class="textfield" name="dish_name_chi" type="text">
+            </div>
+
+            <div class="form-items">
                 <label for="dish_category">Dish Category</label>
                 <select name="dish_category" id="dish_category">
                     <?php
@@ -104,6 +111,11 @@ if ($_POST) {
             <div class="form-items">
                 <label for="dish_description">Dish Description</label>
                 <textarea id="dish_description" name="dish_description" id="" cols="30" rows="10"></textarea>
+            </div>
+
+            <div class="form-items">
+                <label for="dish_description_chi">Dish Description Chinese</label>
+                <textarea id="dish_description_chi" name="dish_description_chi" id="" cols="30" rows="10"></textarea>
             </div>
 
             <div class="form-items">
