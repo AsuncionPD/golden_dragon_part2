@@ -17,6 +17,8 @@ require_once 'backend/database.php';
                     session_start();
                     $_SESSION["isLoggedIn"] = true;
                     $_SESSION["fullname"] = $user[0]["fullname"];
+                    $_SESSION["id_user"] = $user[0]["id_users"]; 
+                    //var_dump($_SESSION["id_user"]);
                     header("location: index.php");
                 }else{
                     $message = "wrong username or password";
@@ -96,15 +98,12 @@ require_once 'backend/database.php';
         </nav>
     </header>
     <main class="main-content">
-
         <div class="login-container">
-            <div class="text-content"></div>
-
+            <!--<div class="text-content"></div>-->
             <div class="text-sci">
                 <h1>Welcome!<br><span>To our restaurant.</span></h1>
                 <p>Log in to continue your culinary journey.</p>
             </div>
-
         <div class="logreg-box">
             <div class="form-box login">
                 <form method="post" action="forms.php">

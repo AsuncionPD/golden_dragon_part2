@@ -24,7 +24,7 @@
     /*Login*/
     .login-container {
         margin-top: 30px;
-        width: 100%;
+        /*width: 100%;*/
         height: 1240px;
         background-size: auto 100%;
         background-position: -600px 5px 
@@ -42,6 +42,10 @@
         font-size: 16px; 
     }
 
+    /*form-box .input-box{
+        width: 280px;
+    }*/
+
     .logreg-box .form-box{
         height: 620px;
         width: 100%;
@@ -50,10 +54,27 @@
         border-bottom-right-radius: 10px;
     }
 
-    .form-box .input-box{
+    /*Login*/
+
+    /*profile*/
+
+    .profile-container{
+        width: 80%;
+        height: 800px;
+        margin-top: 30px;
+    }
+
+    .info-box{
+        display: grid;
+        width: 96%;
+        height: 630px;
+    }
+
+    .tab-content{
+        padding: 0;
         width: 280px;
     }
-    /*Login*/
+    /*profile*/
 }
 
 .main-content {
