@@ -17,6 +17,8 @@ require_once 'backend/database.php';
                     session_start();
                     $_SESSION["isLoggedIn"] = true;
                     $_SESSION["fullname"] = $user[0]["fullname"];
+                    $_SESSION["id_user"] = $user[0]["id_users"]; 
+                    //var_dump($_SESSION["id_user"]);
                     header("location: index.php");
                 }else{
                     $message = "wrong username or password";

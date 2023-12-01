@@ -1,3 +1,56 @@
+<?php
+
+require_once 'backend/database.php';
+$message = "";
+
+session_start();
+
+if(isset($_SESSION["isLoggedIn"])){
+
+    $user = $database->select("tb_users","*",[
+
+        "id_users" => $_SESSION["id_user"]
+
+    ]);
+    
+    //User information 
+    if ($user) {
+
+        $fullname = $user[0]["fullname"];
+        $username = $user[0]["usr"];
+        $email = $user[0]["email"];
+        $password = $user[0]["pwd"];
+
+    }
+}
+
+if ($_POST) {
+
+    if (isset($_POST["change_password"])) {
+
+        $current_password = $_POST["current-password"];
+        $new_password = $_POST["new-password"];
+        $confirm_new_password = $_POST["confirm-new-password"];
+
+        if (!password_verify($current_password, $password)) {
+            $message = "The current password is incorrect";
+        } elseif ($new_password !== $confirm_new_password) {
+            $message = "The passwords do not match";
+        } else {
+     
+            $new_pwd = password_hash($new_password, PASSWORD_DEFAULT, ['cost' => 12]);
+
+            $database->update("tb_users", [
+                "pwd" => $new_pwd
+            ], [
+                "id_users" => $_SESSION["id_user"]
+            ]);
+        }
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,8 +84,7 @@
             <!--movile nav btn-->
 
             <ul class="nav-list">
-                <?php 
-                session_start();
+                <?php
                 if(isset($_SESSION["isLoggedIn"])){
                     echo "<span class='login-icon'><i class='bx bxs-user-circle'></i></span>";
                     echo "<li><a class='nav-list-link' href='./profile.php'>".$_SESSION["fullname"]."</a></li>";
@@ -64,23 +116,22 @@
                             <form method="post" action="profile.php">
                                 <div class="input-box">
                                     <span class="icon"><i class='bx bxs-user-detail'></i></span>
-                                    <input id="fullname" type="text" name="fullname" value="fullname" required>
+                                    <input id="fullname" type="text" name="fullname" value="<?php echo $fullname;?>" required>
                                     <label for="fullname">Fullname</label>
                                 </div>
 
                                 <div class="input-box"> 
                                     <span class="icon"><i class='bx bxs-user'></i></span>
-                                    <input id="username" type="text" name="username" value="username" required>
+                                    <input id="username" type="text" name="username"  value="<?php echo $username;?>" required>
                                     <label for="username">Username</label>
                                 </div>
 
                                 <div class="input-box"> 
                                     <span class="icon"><i class='bx bx-envelope'></i></span>
-                                    <input id="email" type="text" name="email" value="email" required>
+                                    <input id="email" type="text" name="email" value="<?php echo $email;?>" required>
                                     <label for="email">Email</label>
                                 </div>
 
-                                <input class="btn-sign-in" type="submit" value="Save Changes">
                             </form>
                         </div>
 
@@ -105,6 +156,8 @@
                                 </div>
 
                                 <input class="btn-sign-in" type="submit" value="Change Password">
+                                <p><?php echo $message; ?></p>
+                                <input type="hidden" name="change_password" value="1">
                             </form>
                         </div>
                     </div> 
@@ -116,7 +169,7 @@
     </footer>
 
     <script src="js/profile.js"></script>
-
+    
 </body>
 
 </html>
