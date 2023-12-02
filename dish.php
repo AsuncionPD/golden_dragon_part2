@@ -133,21 +133,24 @@ if ($_GET) {
             <div id="modalBook" class="modal">
             <div class="book-content">
                 <span class="close">&times;</span>
-                <form method="post" action="cart.php" class="" >
-                <h3>Select the options:</h3>
+                <div class="form-box-book select-container">
+                <form method="post" action="cart.php">
+                <h2>Select the options</h2>
 
-                <div class="">
+                <div class="quantity-container">
                     <div>
-                        <span class="icon"></span>
-                        <label  class="" for="quantity">Quantity</label>
+                        <label class="" for="quantity"><h3>Quantity</h3></label>
                     </div>
                     <div>
+                        <button id="decrease" class="quantity-button">-</button>
                         <input id="quantity" type="number" name="quantity" min="1" max="10" value="0"> 
-                    </div> 
+                        <button id="increase" class="quantity-button">+</button>
+                    </div>
                 </div>
 
-                <div class="">
-                <p>Category</p>
+                <div class="select-container">
+                 <h3>Category</h3>
+                    <div class="select-radio">
                     <div>
                         <input type="radio" id="individual" name="dish-type" value="individual">
                         <label for="individual">Individual</label>
@@ -160,10 +163,12 @@ if ($_GET) {
                         <input type="radio" id="family" name="dish-type" value="family">
                         <label for="family">Family</label>
                     </div>
+                    </div>
                 </div>
 
-                <div class="">
-                <p>Order type</p>
+                <div class="select-container">
+                    <h3>Order type</h3>
+                    <div class="select-radio">
                     <div>
                         <input type="radio" id="diningIn" name="eating-style" value="diningIn">
                         <label for="diningIn">Dining In</label>
@@ -176,11 +181,13 @@ if ($_GET) {
                         <input type="radio" id="takeout" name="eating-style" value="takeout">
                         <label for="takeout">Takeout</label>
                     </div>
+                    </div>
                 </div>
 
-                <input class="" type="submit" value="Add to cart">
+                <input class="cart-btn wine-color" type="submit" value="Add to cart">
 
                 </form>
+                </div>
             </div>
             </div>
 
@@ -191,7 +198,8 @@ if ($_GET) {
     </footer>
 
     <script src="js/book.js"></script>
-
+    <script src="js/btn-qty.js"></script>
+    
     <script>
 
         let requestLang = "CHI";
