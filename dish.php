@@ -123,14 +123,74 @@ if ($_GET) {
                     echo "<img class='img-related' src='./imgs/spring-rolls.png' alt='spring-rolls'>";
                     echo "<img class='img-related' src='./imgs/cucumber-salad.png' alt='cucumber-salad'>";
                 echo "</div>"; 
-            echo "</div>";  
+
+                echo "<input type='submit' class='cart-btn' id='openModalBook' value='Select'>";
+
+            echo "</div>";
             ?>  
+
+
+            <div id="modalBook" class="modal">
+            <div class="book-content">
+                <span class="close">&times;</span>
+                <form method="post" action="cart.php" class="" >
+                <h3>Select the options:</h3>
+
+                <div class="">
+                    <div>
+                        <span class="icon"></span>
+                        <label  class="" for="quantity">Quantity</label>
+                    </div>
+                    <div>
+                        <input id="quantity" type="number" name="quantity" min="1" max="10" value="0"> 
+                    </div> 
+                </div>
+
+                <div class="">
+                <p>Category</p>
+                    <div>
+                        <input type="radio" id="individual" name="dish-type" value="individual">
+                        <label for="individual">Individual</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="couples" name="dish-type" value="couples">
+                        <label for="couples">Couples</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="family" name="dish-type" value="family">
+                        <label for="family">Family</label>
+                    </div>
+                </div>
+
+                <div class="">
+                <p>Order type</p>
+                    <div>
+                        <input type="radio" id="diningIn" name="eating-style" value="diningIn">
+                        <label for="diningIn">Dining In</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="express" name="eating-style" value="express">
+                        <label for="express">Express</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="takeout" name="eating-style" value="takeout">
+                        <label for="takeout">Takeout</label>
+                    </div>
+                </div>
+
+                <input class="" type="submit" value="Add to cart">
+
+                </form>
+            </div>
+            </div>
 
         </div>
     </main>
     <footer class="footer">
         <div class="footer-content"></div>
     </footer>
+
+    <script src="js/book.js"></script>
 
     <script>
 

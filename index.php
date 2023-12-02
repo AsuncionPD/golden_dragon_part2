@@ -33,10 +33,10 @@
         <!--options-->
         <section class="container">
             <div class="categories-container">
-                <button class="category">
+                <a href="menu.php" class="category">
                     <img class="vector-img" src="imgs/vector-starters.png" alt="vector-starters">
                     <p class="font-options">Starters</p>
-                </button>
+                </a>
 
                 <button class="category">
                     <img class="vector-img" src="imgs/vector-main_course.png" alt="vector-main_course">
