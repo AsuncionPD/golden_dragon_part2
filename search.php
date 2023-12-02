@@ -63,7 +63,6 @@
             </div>
 
             <p id='found' class='dish-title'></p>
-            <!--<div id="items" class="activities-container"></div>-->
         </section>
 
     </main>
@@ -103,7 +102,6 @@
 
                 if(data.length > 0){
                     
-                    //let container = document.getElementById("items");
                     let container = document.createElement("div");
                     container.setAttribute("id", "items");
                     container.classList.add("dishes-container");
