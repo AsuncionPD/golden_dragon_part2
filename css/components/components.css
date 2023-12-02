@@ -123,3 +123,19 @@
     font-weight: var(--fw-md);
     font-size: var(--fs-md);
 }
+
+.search{
+    padding: .5rem;
+    border-radius: .5rem;
+}
+
+.btn-search {
+    text-align: center;
+    background: var(--clr-wine);
+    color: var(--clr-white);
+    font-weight: var(--fw-md);
+    font-size: var(--fs-md);
+    padding: .5rem 2rem;
+    border-radius: 1.5rem;
+    margin-bottom: 0.5rem;
+}
