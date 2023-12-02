@@ -33,22 +33,22 @@
         <!--options-->
         <section class="container">
             <div class="categories-container">
-                <button class="category">
+                <button class="category" onclick="redirectPage('starters.php')">
                     <img class="vector-img" src="imgs/vector-starters.png" alt="vector-starters">
                     <p class="font-options">Starters</p>
                 </button>
 
-                <button class="category">
+                <button class="category" onclick="redirectPage('main-courses.php')">
                     <img class="vector-img" src="imgs/vector-main_course.png" alt="vector-main_course">
                     <p class="font-options">Main Courses</p>
                 </button>
 
-                <button class="category">
+                <button class="category" onclick="redirectPage('desserts.php')">
                     <img class="vector-img" src="imgs/vector-desserts.png" alt="vector-desserts">
                     <p class="font-options">Desserts</p>
                 </button>
 
-                <button class="category">
+                <button class="category" onclick="redirectPage('drinks.php')">
                     <img class="vector-img" src="imgs/vector-drinks.png" alt="vector-drinks">
                     <p class="font-options">Drinks</p>
                 </button>
@@ -196,6 +196,12 @@
     <?php
     include "./parts/footer.php";
     ?>
+
+    <script>
+    function redirectPage(url) {
+        window.location.href = url;
+    }
+    </script>
 
 </body>
 

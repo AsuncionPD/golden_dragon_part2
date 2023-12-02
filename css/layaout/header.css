@@ -42,6 +42,24 @@
     background-size: cover;
 }
 
+.main-courses-bg{
+    background: url(../../imgs/main-courses-bg.webp);
+    background-position: center;
+    background-size: cover;
+}
+
+.desserts-bg{
+    background: url(../../imgs/desserts-bg.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.drinks-bg{
+    background: url(../../imgs/drinks-bg.webp);
+    background-position: center;
+    background-size: cover;
+}
+
 /*Hacer que funcione en index icon user*/
 .login-icon{
     font-size: 2rem; 
