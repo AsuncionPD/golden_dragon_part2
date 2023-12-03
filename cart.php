@@ -1,6 +1,45 @@
 <?php
 require_once './backend/database.php';
 
+if($_POST){
+
+    var_dump($_POST);
+
+    $dishes_details = [];
+
+    //get destination cost total
+    $dish_cost = $_POST["dish_price"] * $_POST["quantity"];
+
+    if (isset($_COOKIE['dishes'])) {
+        /* delete/remove a cookie
+        unset($_COOKIE['destinations']);
+        setcookie('destinations', '', time() - 3600);*/
+        $data = json_decode($_COOKIE['dishes'], true);
+
+        $booking_details = $data;
+        //var_dump($data);
+    }
+
+    //Asign variable names to array dishes_details
+    $dishes_details["id"] = $_POST["id_dish"];
+    $dishes_details["quantity"] = $_POST["quantity"];
+    $dishes_details["eating-style"] = $_POST["eating-style"];
+    $dishes_details["date"] = $_POST["date"];
+    $dishes_details["time"] = $_POST["time"];
+    $dishes_details["cost"] = $dish_cost;
+
+    //check if this is a booked dish to update the array
+    if($_POST["index"] >= 0){
+        $booking_details[$_POST["index"]] = $dishes_details;
+    }else{
+        $booking_details[] = $dishes_details;
+    }
+    
+    //expire in 2 hrs
+    setcookie('dishes', json_encode($booking_details), time()+7200);  
+
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +68,6 @@ require_once './backend/database.php';
     </header>
     
     <main>
-
 
         
     </main>
