@@ -230,7 +230,44 @@ input[type="radio"]:checked {
 }
 
 .bx.bxs-cart-alt {
-    font-size: 32px; /* Tamaño deseado */
+    font-size: 32px; 
+}
+
+.styled-table {
+    width: 80%;
+    margin: auto;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.styled-table th {
+    background-color: var(--clr-gold); 
+    color: white;
+    padding: 10px;
+    text-align: center;
+    height: 3rem;
+}
+
+.styled-table td {
+    background-color: rgba(194, 177, 78, 0.651);
+    padding: 10px;
+    text-align: center;
+}
+
+.rounded-image {
+    width: 70px; 
+    height: 70px;
+    border-radius: 50%; 
+}
+
+.table-container{
+    text-align: center;
+}
+
+.title-cart{
+    margin-top: 4rem;
+    text-align: center;
+    font-size: var(--fs-lg);
 }
 
 /*cart*/

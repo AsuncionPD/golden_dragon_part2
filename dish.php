@@ -62,17 +62,15 @@ if ($_GET) {
         $lang = "CHI";
     }
 
-    /*Coockie*/
-
-    /*$booking_details = [];
+    /*Cookie*/
+    $booking_details = [];
     if(isset($_GET["index"])){
         $data = json_decode($_COOKIE['dishes'], true);
         $booking_details = $data[$_GET["index"]];
-        var_dump($booking_details);
+        //var_dump($booking_details);
 
         $pos_array = $_GET["index"];
-    }*/
-
+    }
 }
 ?>
 
@@ -100,7 +98,7 @@ if ($_GET) {
         <?php
         include "./parts/top-nav.php";
         ?>
-        <hr style="border-top: 65px solid var(--clr-wine); margin: 0;">
+        <!--<hr style="border-top: 65px solid var(--clr-wine); margin: 0;">-->
         <!--<div class="top-page">
         <div class="img-logo" ></div>-->
     </header>
@@ -270,19 +268,19 @@ if ($_GET) {
         .then(response => {
             if (response.ok) {
                 //Close modal after submit
-                document.getElementById("modalBook").style.display = "none";
-                /**/  
-                return response.text(); // Si la respuesta es OK, devuelve el texto
+                document.getElementById("modalBook").style.display = "none"; 
+                
+                return response.text(); 
             }
-            throw new Error('Network response was not ok.'); // Maneja otros casos
+            throw new Error('Network response was not ok.'); 
         })
         .then(data => {
-            // Realiza acciones con los datos obtenidos
-            console.log(data); // Por ejemplo, imprime la respuesta del servidor
-            // Puedes realizar otras acciones con los datos aquí
+           
+            console.log(data); 
+            
         })
         .catch(error => {
-            // Maneja los errores si ocurrieron
+            
             console.error('There has been a problem with your fetch operation:', error);
         });
 
