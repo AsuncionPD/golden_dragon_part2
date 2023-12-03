@@ -56,7 +56,6 @@
 .imgs-related-container{
     display: grid;
     margin-top: 0;
-    margin-bottom: 3rem;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1.5rem;
 }
@@ -65,6 +64,7 @@
     width: 100%;
     border-radius: 25%;
     margin-right: 1rem;
+    height: 7.5rem;
 }
 
 .img-dish {
@@ -122,4 +122,18 @@
     text-align: center;
     font-weight: var(--fw-md);
     font-size: var(--fs-md);
+}
+
+.search{
+    padding: .5rem;
+    border-radius: .9rem;
+    font-weight: var(--fw-md);
+    font-size: var(--fs-nm);
+}
+
+.btn-search {
+    text-align: center;
+    background: var(--clr-wine);
+    color: var(--clr-white);
+    padding: .5rem 2rem;
 }

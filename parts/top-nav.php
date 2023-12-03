@@ -22,9 +22,9 @@
             echo "<li><a class='nav-list-link' href='./forms.php'>Login</a></li>";
             }
          ?>
-        <li><a class="nav-list-link" href="#">Home</a></li>
+        <li><a class="nav-list-link" href="index.php">Home</a></li>
         <li><a class="nav-list-link" href="#">About</a></li>
-        <li><a class="nav-list-link" href="#">Menu</a></li>
         <li><a class="nav-list-link" href="#">Contact</a></li>
+        <li><a class="nav-list-link" href="search.php">Search</a></li>
     </ul>
 </nav>
