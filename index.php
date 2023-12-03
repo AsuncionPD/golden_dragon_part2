@@ -1,3 +1,10 @@
+<?php
+require_once './backend/database.php';
+// Reference: https://medoo.in/api/select
+$typeDishId = 1;
+$feature = $database->get("tb_type_dish", "*", ["id_type_dish" => $typeDishId]);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,134 +67,43 @@
         <img class="img-in-the-middle" src="imgs/space-bg.png" alt="secong_img-home_page">
         <!--space-->
 
-        <!--menu-->
+        <!--featured dishes-->
         <section class="container">
-            <h1 class="featured-dishes-title">Featured dishes</h1>
+         <h1 class="featured-dishes-title">Featured dishes</h1>
 
-            <div class="dishes-container">
-                <section class="dish">
-                    <div class="img-container">
-                        <img class="dish-img" src="imgs/gold-cup.png" alt="Gold cup">
-                    </div>
-                    <section class="padding">
-                        <h2 class="price dish-title">$15</h2>
-                        <h3 class="dish-title">Gold Cup</h3>
-                        <p class="dish-description">Shrimp and Broccoli with a brown sauce with garlic.</p>
-                        <a class="btn" href="#">See more</a>
-                    </section>
-                </section>
+            <?php
+            echo "<div class='dishes-container'>";
 
-                <section class="dish">
-                    <div class="img-container">
-                        <img class="dish-img" src="imgs/kung-pao-chicken.png" alt="Kung Pao Chicken">
-                    </div>
-                    <section class="padding">
-                        <h2 class="price dish-title">$25</h2>
-                        <h3 class="dish-title">Kung Pao Chicken</h3>
-                        <p class="dish-description">Cubed chicken in a sweet, spicy, and savory sauce.</p>
-                        <a class="btn" href="#">See more</a>
-                    </section>
-                </section>
+            $items = $database->select("tb_dishes", [
+                "[>]tb_type_dish" => ["id_type_dish" => "id_type_dish"]
+            ], [
+                "tb_dishes.id_dish",
+                "tb_dishes.dish_name",
+                "tb_dishes.dish_description",
+                "tb_dishes.dish_image",
+                "tb_dishes.dish_price",
+            ], [
+                "tb_dishes.id_type_dish" => $typeDishId,
+                "LIMIT" => 10
+            ]);
 
-                <section class="dish">
-                    <div class="img-container">
-                        <img class="dish-img" src="imgs/orange-chicken.png" alt="Orange Chicken">
-                    </div>
-                    <section class="padding">
-                        <h2 class="price dish-title">$18</h2>
-                        <h3 class="dish-title">Orange Chicken</h3>
-                        <p class="dish-description">Pan-fried, and coated chicken in orange sauce.</p>
-                        <a class="btn" href="#">See more</a>
-                    </section>
-                </section>
+            foreach ($items as $item) {
+                echo "<section class='dish'>";
+                echo "<div class='img-container'>";
+                echo "<img class='dish-img' src='./imgs/" . $item["dish_image"] . "' alt='" . $item["dish_name"] . "'>";
+                echo "</div>";
+                echo "<section class='padding'>";
+                echo "<h2 class='price dish-title'>" . $item["dish_price"] . "</h2>";
+                echo "<h3 class='dish-title'>" . $item["dish_name"] . "</h3>";
+                echo "<p class='dish-description'>" . substr($item["dish_description"], 0, 70) . "...</p>";
+                echo "<a class='btn' href='dish.php?id=" . $item["id_dish"] . "'>See more</a>";
+                echo "</section>";
+                echo "</section>";
+            }
+            echo "</div>";
 
-                <section class="dish">
-                    <div class="img-container">
-                        <img class="dish-img" src="imgs/pork-chive.png" alt="Pork and chive">
-                    </div>
-                    <section class="padding">
-                        <h2 class="price dish-title">$12</h2>
-                        <h3 class="dish-title">Chive Dumplings</h3>
-                        <p class="dish-description">Juicy dumplings filled with ground pork and chives.</p>
-                        <a class="btn" href="#">See more</a>
-                    </section>
-                </section>
-            </div>
+            ?>
 
-            <div class="dishes-container">
-                <section class="dish">
-                    <div class="img-container">
-                        <img class="dish-img" src="imgs/spring-rolls.png" alt="Spring Rolls">
-                    </div>
-                    <section class="padding">
-                        <h2 class="price dish-title">$12</h2>
-                        <h3 class="dish-title">Spring Rolls</h3>
-                        <p class="dish-description">Thin pastry wraps filled with vegetables and a type of meat</p>
-                        <a class="btn" href="#">See more</a>
-                    </section>
-                </section>
-
-                <section class="dish">
-                    <div class="img-container">
-                        <img class="dish-img" src="imgs/almond-jelly.png" alt="Almond Jelly">
-                    </div>
-                    <section class="padding">
-                        <h2 class="price dish-title">$10</h2>
-                        <h3 class="dish-title">Almond Jelly</h3>
-                        <p class="dish-description">Gelatin and fruit salad swimming in a sweet syrup.</p>
-                        <a class="btn" href="#">See more</a>
-                    </section>
-                </section>
-
-                <section class="dish">
-                    <div class="img-container">
-                        <img class="dish-img" src="imgs/cucumber-salad.png" alt="Cucumber Salad">
-                    </div>
-                    <section class="padding">
-                        <h2 class="price dish-title">$12</h2>
-                        <h3 class="dish-title">Pai Huang Gua</h3>
-                        <p class="dish-description">Cucumbers in a vinegar-based with garlic and chilies.</p>
-                        <a class="btn" href="#">See more</a>
-                    </section>
-                </section>
-
-                <section class="dish">
-                    <div class="img-container">
-                        <img class="dish-img" src="imgs/liangpi.png" alt="Liangpi">
-                    </div>
-                    <section class="padding">
-                        <h2 class="price dish-title">$22</h2>
-                        <h3 class="dish-title">Liangpi</h3>
-                        <p class="dish-description">Cold wheat noodles with a savory sauce.</p>
-                        <a class="btn" href="#">See more</a>
-                    </section>
-                </section>
-            </div>
-
-            <div class="dishes-container container-width">
-                <section class="dish">
-                    <div class="img-container">
-                        <img class="dish-img" src="imgs/corn-soup.png" alt="Corn Soup">
-                    </div>
-                    <section class="padding">
-                        <h2 class="price dish-title">$20</h2>
-                        <h3 class="dish-title">Corn Chicken Soup</h3>
-                        <p class="dish-description">Sweet corn and ground chicken.</p>
-                        <a class="btn" href="#">See more</a>
-                    </section>
-                </section>
-
-                <section class="dish">
-                    <div class="img-container">
-                        <img class="dish-img" src="imgs/grilled-chicken.png" alt="Grilled Chicken">
-                    </div>
-                    <section class="padding">
-                        <h2 class="price dish-title">$25</h2>
-                        <h3 class="dish-title">Grilled Chicken</h3>
-                        <p class="dish-description">Chicken with a sweet-savory glaze.</p>
-                        <a class="btn" href="#">See more</a>
-                    </section>
-                </section>
             </div>
         </section>
     </main>

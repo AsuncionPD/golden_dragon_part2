@@ -12,7 +12,8 @@ if ($_GET) {
 
     $item = $database->select("tb_dishes", [
         "[>]tb_category_number_people" => ["id_category_people" => "id_category_people"],
-        "[>]tb_dish_category" => ["id_dish_category" => "id_dish_category"]
+        "[>]tb_dish_category" => ["id_dish_category" => "id_dish_category"],
+        "[>]tb_type_dish" => ["id_type_dish" => "id_type_dish"]
     ], [
         "tb_dishes.id_dish",
         "tb_dishes.dish_name_chi",
@@ -25,6 +26,8 @@ if ($_GET) {
         "tb_dish_category.id_dish_category",
         "tb_dish_category.dish_category_name",
         "tb_dish_category.dish_category_description",
+        "tb_type_dish.id_type_dish",
+        "tb_type_dish.type_name",
     ], [
         "id_dish" => $_GET["id"]
     ]);
@@ -39,7 +42,8 @@ if ($_GET) {
 
         $item = $database->select("tb_dishes", [
             "[>]tb_category_number_people" => ["id_category_people" => "id_category_people"],
-            "[>]tb_dish_category" => ["id_dish_category" => "id_dish_category"]
+            "[>]tb_dish_category" => ["id_dish_category" => "id_dish_category"],
+            "[>]tb_type_dish" => ["id_type_dish" => "id_type_dish"]
         ], [
             "tb_dishes.id_dish",
             "tb_dishes.dish_name",
@@ -52,6 +56,8 @@ if ($_GET) {
             "tb_dish_category.id_dish_category",
             "tb_dish_category.dish_category_name",
             "tb_dish_category.dish_category_description",
+            "tb_type_dish.id_type_dish",
+            "tb_type_dish.type_name",
         ], [
             "id_dish" => $_GET["id"]
         ]);
@@ -95,7 +101,11 @@ if ($_GET) {
 
                 echo "<h2 class='dish-name'><span id='dish-name'>" . $item[0]["dish_name"] . "</h2>";
                 echo "<p id='dish-description' class='description'>" . $item[0]["dish_description"] . "</p>";
-                echo "<button class='star-btn'><img class='img-star' src='./imgs/empty-star.png' alt='empty-star'></button>";
+
+                if ($item[0]["id_type_dish"] == 1) {
+                    echo "<button class='star-btn'><img class='img-star' src='./imgs/empty-star.png' alt='empty-star'></button>";
+                }
+
                 echo "<div class='dish-caracteristics'>";
                     echo "<div>";
                     echo "<h3 class='margin-details'>Category</h3>";
@@ -117,11 +127,30 @@ if ($_GET) {
                     echo "</div>";  
                 echo "</div>";  
 
-                echo "<h3>Realeted Dishes</h3>";
+                //Pull Related Dishes from Category
+                $currentCategoryID = $item[0]["id_dish_category"];
+                $relatedDishes = $database->select("tb_dishes", [
+                    "[>]tb_type_dish" => ["id_type_dish" => "id_type_dish"]
+                ], [
+                    "tb_dishes.id_dish",
+                    "tb_dishes.dish_name",
+                    "tb_dishes.dish_image",
+                    "tb_type_dish.id_type_dish",
+                    "tb_type_dish.type_name",
+                ], [
+                    "tb_dishes.id_dish[!]" => $_GET["id"],
+                    "id_dish_category" => $currentCategoryID, 
+                    "LIMIT" => 3,
+                ]);
+
+                echo "<h3>Related Dishes</h3>";
                 echo "<div class='imgs-related-container'>";
-                    echo "<img class='img-related' src='./imgs/pork-chive.png' alt='pork-chive'>";
-                    echo "<img class='img-related' src='./imgs/spring-rolls.png' alt='spring-rolls'>";
-                    echo "<img class='img-related' src='./imgs/cucumber-salad.png' alt='cucumber-salad'>";
+
+                foreach ($relatedDishes as $relatedDish) {
+                    echo "<a href='dish.php?id=" . $relatedDish["id_dish"] . "'>";
+                    echo "<img class='img-related' src='./imgs/" . $relatedDish["dish_image"] . "' alt='" . $relatedDish["dish_name"] . "'>";
+                    echo "</a>";
+                }
                 echo "</div>"; 
             echo "</div>";  
             ?>  
