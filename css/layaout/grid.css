@@ -44,7 +44,7 @@
 /*specific dish info*/
 .dish-container {
     display: grid;
-    margin: 15rem auto;
+    margin: 5rem auto; /*15rem auto*/
     margin-bottom: 0;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1.5rem;

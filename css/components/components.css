@@ -221,3 +221,16 @@ input[type="radio"]:checked {
 }
 
 /*modal*/
+
+/*cart*/
+
+.line-in-top{
+    border-top: 5px var(--clr-wine); 
+    margin: 0;
+}
+
+.bx.bxs-cart-alt {
+    font-size: 32px; /* Tamaño deseado */
+}
+
+/*cart*/

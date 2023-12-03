@@ -4,6 +4,7 @@ require_once './backend/database.php';
 $link = "";
 $url_params = "";
 $lang = "";
+$quantity = 1;
 
 
 if ($_GET) {
@@ -76,13 +77,20 @@ if ($_GET) {
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;900&display=swap"rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mooli&display=swap" rel="stylesheet">
     <!-- google fonts -->
+    <!-- icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- icons -->
     <link rel="stylesheet" href="./css/main.css">
 </head>
 
 <body>
     <header>
-        <div class="top-page">
-            <div class="img-logo" ></div>
+        <?php
+        include "./parts/top-nav.php";
+        ?>
+        <hr style="border-top: 65px solid var(--clr-wine); margin: 0;">
+        <!--<div class="top-page">
+        <div class="img-logo" ></div>-->
     </header>
     <main class="main-content">   
         <div class="dish-container">
@@ -143,50 +151,39 @@ if ($_GET) {
                     </div>
                     <div>
                         <button id="decrease" class="quantity-button">-</button>
-                        <input id="quantity" type="number" name="quantity" min="1" max="10" value="0"> 
+                        <input id="quantity" type="number" name="quantity" min="1" max="10" value="<?php echo $quantity;?>"> 
                         <button id="increase" class="quantity-button">+</button>
                     </div>
                 </div>
 
+                <h3 class="">Total: $<span id="total"></span></h3>
+
                 <div class="select-container">
-                 <h3>Category</h3>
+                    <h3>Ordering mode</h3>
                     <div class="select-radio">
-                    <div>
-                        <input type="radio" id="individual" name="dish-type" value="individual">
-                        <label for="individual">Individual</label>
-                    </div>
-                    <div>
-                        <input type="radio" id="couples" name="dish-type" value="couples">
-                        <label for="couples">Couples</label>
-                    </div>
-                    <div>
-                        <input type="radio" id="family" name="dish-type" value="family">
-                        <label for="family">Family</label>
-                    </div>
+                        <div>
+                            <input type="radio" id="diningIn" name="eating-style" value="diningIn">
+                            <label for="diningIn">Dining In</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="express" name="eating-style" value="express">
+                            <label for="express">Express</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="takeout" name="eating-style" value="takeout">
+                            <label for="takeout">Takeout</label>
+                        </div>
                     </div>
                 </div>
 
-                <div class="select-container">
-                    <h3>Order type</h3>
-                    <div class="select-radio">
-                    <div>
-                        <input type="radio" id="diningIn" name="eating-style" value="diningIn">
-                        <label for="diningIn">Dining In</label>
-                    </div>
-                    <div>
-                        <input type="radio" id="express" name="eating-style" value="express">
-                        <label for="express">Express</label>
-                    </div>
-                    <div>
-                        <input type="radio" id="takeout" name="eating-style" value="takeout">
-                        <label for="takeout">Takeout</label>
-                    </div>
-                    </div>
-                </div>
+                <input type="hidden" id="date" name="date" value="">
+                <input type="hidden" id="time" name="time" value="">
+                <input type="hidden" id="dish_price" value="<?php echo $item[0]["dish_price"];?>">
 
-                <input class="cart-btn wine-color" type="submit" value="Add to cart">
-
+                <input class="cart-btn wine-color" type="submit" id="addToCartBtn" value="Add to cart">
+                
                 </form>
+
                 </div>
             </div>
             </div>
@@ -199,7 +196,7 @@ if ($_GET) {
 
     <script src="js/book.js"></script>
     <script src="js/btn-qty.js"></script>
-    
+
     <script>
 
         let requestLang = "CHI";
@@ -236,7 +233,61 @@ if ($_GET) {
             })
             .catch(err => console.log("error: "+ err));
         }
+
     </script>
+
+    <!--Price-->
+    <script>
+        let total = 0;
+        
+        function updateTotal(){
+
+            let quantity_value = document.getElementById("quantity").value;
+            let dish_price = document.getElementById("dish_price").value;
+
+            total = dish_price * quantity_value;
+            document.getElementById("total").innerHTML = total.toFixed(2);
+        }
+
+        document.addEventListener("DOMContentLoaded", function(){
+
+            let quantity = document.getElementById("quantity");
+            let decreaseButton = document.getElementById('decrease');
+            let increaseButton = document.getElementById('increase');
+
+            increaseButton.addEventListener('click', () => {
+                updateTotal();
+            });
+
+            decreaseButton.addEventListener('click', () => {
+                updateTotal();
+            });
+
+            updateTotal();
+
+        });
+        
+    </script>
+
+    <!--Time and Date-->
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.3/build/global/luxon.min.js"></script>
+    <script>
+
+        document.getElementById("addToCartBtn").addEventListener("click", function(event) {
+
+        let DateTime = luxon.DateTime;
+        const now = DateTime.now();
+        
+        let currentDate = now.toFormat("yyyy-MM-dd");
+        let currentTime = now.toFormat("HH:mm");
+
+        document.getElementById("date").value = currentDate;
+        document.getElementById("time").value = currentTime;
+
+        });
+
+    </script>
+
 </body>
 
 </html>
