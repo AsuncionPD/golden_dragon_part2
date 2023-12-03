@@ -58,7 +58,7 @@
                     ?>
                     </select>
 
-                    <input id="search" type="button" class="btn-search" value="Search" onclick="getFilters()">
+                    <input id="search" type="button" class="search btn-search" value="Search" onclick="getFilters()">
                 </form>            
             </div>
 
