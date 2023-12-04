@@ -26,5 +26,6 @@
         <li><a class="nav-list-link" href="#">About</a></li>
         <li><a class="nav-list-link" href="#">Contact</a></li>
         <li><a class="nav-list-link" href="search.php">Search</a></li>
+        <li><a class="nav-list-link" href="cart.php" id="cartIcon"><span class="icon"><i class='bx bxs-cart-alt'></i></span></a></li>
     </ul>
 </nav>

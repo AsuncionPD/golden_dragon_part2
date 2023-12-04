@@ -4,6 +4,8 @@ require_once './backend/database.php';
 $link = "";
 $url_params = "";
 $lang = "";
+$quantity = 1;
+$pos_array = -1;
 
 
 if ($_GET) {
@@ -66,6 +68,15 @@ if ($_GET) {
         $lang = "CHI";
     }
 
+    /*Cookie*/
+    $booking_details = [];
+    if(isset($_GET["index"])){
+        $data = json_decode($_COOKIE['dishes'], true);
+        $booking_details = $data[$_GET["index"]];
+        //var_dump($booking_details);
+
+        $pos_array = $_GET["index"];
+    }
 }
 ?>
 
@@ -82,13 +93,20 @@ if ($_GET) {
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;900&display=swap"rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mooli&display=swap" rel="stylesheet">
     <!-- google fonts -->
+    <!-- icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- icons -->
     <link rel="stylesheet" href="./css/main.css">
 </head>
 
 <body>
     <header>
-        <div class="top-page">
-            <div class="img-logo" ></div>
+        <?php
+        include "./parts/top-nav.php";
+        ?>
+        <!--<hr style="border-top: 65px solid var(--clr-wine); margin: 0;">-->
+        <!--<div class="top-page">
+        <div class="img-logo" ></div>-->
     </header>
     <main class="main-content">   
         <div class="dish-container">
@@ -152,14 +170,24 @@ if ($_GET) {
                     echo "</a>";
                 }
                 echo "</div>"; 
-            echo "</div>";  
+
+                echo "<input type='submit' class='cart-btn' id='openModalBook' value='Select'>";
+
+            echo "</div>";
             ?>  
+
+            <?php
+            include "./book.php";
+            ?>
 
         </div>
     </main>
     <footer class="footer">
         <div class="footer-content"></div>
     </footer>
+
+    <script src="js/book.js"></script>
+    <script src="js/btn-qty.js"></script>
 
     <script>
 
@@ -197,7 +225,98 @@ if ($_GET) {
             })
             .catch(err => console.log("error: "+ err));
         }
+
     </script>
+
+    <!--Price-->
+    <script>
+        let total = 0;
+        
+        function updateTotal(){
+
+            let quantity_value = document.getElementById("quantity").value;
+            let dish_price = document.getElementById("dish_price").value;
+
+            total = dish_price * quantity_value;
+            document.getElementById("total").innerHTML = total.toFixed(2);
+        }
+
+        document.addEventListener("DOMContentLoaded", function(){
+
+            let quantity = document.getElementById("quantity");
+            let decreaseButton = document.getElementById('decrease');
+            let increaseButton = document.getElementById('increase');
+
+            increaseButton.addEventListener('click', () => {
+                updateTotal();
+            });
+
+            decreaseButton.addEventListener('click', () => {
+                updateTotal();
+            });
+
+            updateTotal();
+
+        });
+        
+    </script>
+
+    <!--Time and Date-->
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.3/build/global/luxon.min.js"></script>
+    <script>
+
+        document.getElementById("addToCartBtn").addEventListener("click", function(event) {
+
+        let DateTime = luxon.DateTime;
+        const now = DateTime.now();
+        
+        let currentDate = now.toFormat("yyyy-MM-dd");
+        let currentTime = now.toFormat("HH:mm");
+
+        document.getElementById("date").value = currentDate;
+        document.getElementById("time").value = currentTime;
+
+        });
+
+    </script>
+
+    <!-- Send form with order information -->
+    <script>
+        
+        const form = document.getElementById("dishForm");
+
+        form.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const formData = new FormData(form);
+
+        fetch("cart.php", {
+            method: "POST",
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                //Close modal after submit
+                document.getElementById("modalBook").style.display = "none"; 
+                
+                return response.text(); 
+            }
+            throw new Error('Network response was not ok.'); 
+        })
+        .then(data => {
+           
+            console.log(data); 
+            
+        })
+        .catch(error => {
+            
+            console.error('There has been a problem with your fetch operation:', error);
+        });
+
+    });
+
+    </script>
+
 </body>
 
 </html>

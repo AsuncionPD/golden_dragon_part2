@@ -70,35 +70,9 @@ if ($_POST) {
 </head>
 <body>
 <header>
-        <div class="top-page">
-            <div class="img-logo" ></div>
-        </div>
-        <nav class="top-nav">
-            <!--movile nav btn-->
-            <input class="mobile-check" type="checkbox">
-            <label class="mobile-btn">
-                <span>
-
-                </span>
-            </label>
-            <!--movile nav btn-->
-
-            <ul class="nav-list">
-                <?php
-                if(isset($_SESSION["isLoggedIn"])){
-                    echo "<span class='login-icon'><i class='bx bxs-user-circle'></i></span>";
-                    echo "<li><a class='nav-list-link' href='./profile.php'>".$_SESSION["fullname"]."</a></li>";
-                    echo "<li><a class='nav-list-link' href='./backend/logout.php'>Logout</a></li>";
-                }else{
-                    echo "<li><a class='nav-list-link' href='./forms.php'>Login</a></li>";
-                }
-                ?>
-                <li><a class="nav-list-link" href="#">Home</a></li>
-                <li><a class="nav-list-link" href="#">About</a></li>
-                <li><a class="nav-list-link" href="#">Menu</a></li>
-                <li><a class="nav-list-link" href="#">Contact us</a></li>
-            </ul>
-        </nav>
+        <?php
+        include "./parts/top-nav.php";
+        ?>
     </header>
 
     <main class="main-content">

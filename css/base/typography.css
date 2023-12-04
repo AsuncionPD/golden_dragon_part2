@@ -11,6 +11,7 @@
 .font-options {
     font-size: var(--fs-md);
     font-weight: var(--fw-md);
+    color: var(--clr-black);
 }
 
 .featured-dishes-title {

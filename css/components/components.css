@@ -25,7 +25,7 @@
     font-weight: var(--fw-md);
     font-size: var(--fs-md);
     padding: .5rem 2rem;
-    border-radius: 1.5rem;
+    border-radius: 0.5rem;
     text-decoration: none;
     margin-bottom: 0.5rem;
 }
@@ -137,3 +137,151 @@
     color: var(--clr-white);
     padding: .5rem 2rem;
 }
+
+/*modal*/
+
+.cart-btn{
+    width: 300px;
+    height: 45px;
+    background: var(--clr-gold);
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    font-weight: var(--fw-md);
+    font-size: var(--fs-md);
+    margin: 0 auto;
+}
+
+.wine-color{
+    background-color: var(--clr-wine);
+}
+
+.modal{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.book-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+  
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+  
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.form-box-book{
+
+    text-align: center;
+}
+
+.select-container{
+    margin: 2rem;
+}
+
+.select-radio {
+    display: flex;
+    justify-content: center;
+}
+
+input[type="radio"] {
+    -webkit-appearance: none; 
+    -moz-appearance: none;
+    appearance: none;
+    width: 15px; 
+    height: 15px;
+    border-radius: 50%; 
+    border: 2px solid var(--clr-gold); 
+    outline: none; 
+  }
+  
+input[type="radio"]:checked {
+    background-color: var(--clr-gold); 
+}
+
+.quantity-button {
+    width: 45px; 
+    height: 45px;
+    border-radius: 50%; 
+    border: none;
+    background-color: var(--clr-gold);
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 0 1rem; 
+}
+
+/*modal*/
+
+/*cart*/
+
+.line-in-top{
+    border-top: 5px var(--clr-wine); 
+    margin: 0;
+}
+
+.bx.bxs-cart-alt {
+    font-size: 32px; 
+}
+
+.styled-table {
+    width: 80%;
+    margin: auto;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.styled-table th {
+    background-color: var(--clr-gold); 
+    color: white;
+    padding: 10px;
+    text-align: center;
+    height: 3rem;
+}
+
+.styled-table td {
+    background-color: rgba(194, 177, 78, 0.651);
+    padding: 10px;
+    text-align: center;
+}
+
+.rounded-image {
+    width: 70px; 
+    height: 70px;
+    border-radius: 50%; 
+}
+
+.table-container{
+    text-align: center;
+}
+
+.title-cart{
+    margin-top: 4rem;
+    text-align: center;
+    font-size: var(--fs-lg);
+}
+
+/*cart*/
