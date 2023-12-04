@@ -153,10 +153,17 @@ if (isset($_COOKIE['dishes'])) {
             </div>
             <div class="">
                 <?php 
-                    if($booking_details != null) 
-                    echo "<input type='submit' class='cart-btn btn' id='openModalPay' value='Pay'>";
+                if(isset($_COOKIE['dishes'])){
+                    if($booking_details != null)
+                    echo "<form action='submit.php' method='post'>
+                    . <input type='hidden' id='total-cost' name='total-cost' value='".$total_cost."'>
+                    . <input type='hidden' id='submit-date' name='submit-date' value=''>
+                    . <input type='hidden' id='submit-time' name='submit-time' value=''>
+                    . <input type='submit' class='cart-btn btn' id='pay-btn' value='Pay'>
+                    . </form>";
                     /*unset($_COOKIE['destinations']);
                     setcookie('destinations', '',time()-3600);*/
+                    }
                 ?>
             </div>
         </section>
@@ -167,5 +174,24 @@ if (isset($_COOKIE['dishes'])) {
     ?>
 
 </body>
+
+<!--Time and Date-->
+<script src="https://cdn.jsdelivr.net/npm/luxon@3.4.3/build/global/luxon.min.js"></script>
+    <script>
+
+        document.getElementById("pay-btn").addEventListener("click", function(event) {
+
+        let DateTime = luxon.DateTime;
+        const now = DateTime.now();
+        
+        let currentDate = now.toFormat("yyyy-MM-dd");
+        let currentTime = now.toFormat("HH:mm");
+
+        document.getElementById("submit-date").value = currentDate;
+        document.getElementById("submit-time").value = currentTime;
+
+        });
+
+    </script>
 
 </html>
