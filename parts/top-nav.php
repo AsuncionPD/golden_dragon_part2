@@ -13,7 +13,9 @@
 
     <ul class="nav-list">
         <?php 
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         if(isset($_SESSION["isLoggedIn"])){
             echo "<span class='login-icon'><i class='bx bxs-user-circle'></i></span>";
             echo "<li><a class='nav-list-link' href='./profile.php'>".$_SESSION["fullname"]."</a></li>";

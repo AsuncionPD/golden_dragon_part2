@@ -5,19 +5,20 @@ require_once 'backend/database.php';
 
 if($_POST){
 
-    $requested_dish_name = "";
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
 
+    if(isset($_SESSION["isLoggedIn"])){
+
+    $requested_dish_name = "";
     //Individual time
     $order_date = "";    //Exist the date and time for all the orders
     $order_time = "";    //You can just get it through post
-
     $order_quantity = "";
-
-    $order_price = $_POST["total-cost"]; //Price of the total order
-
     $order_type_name = "";
-
-    $id_user = ""; //This will link the orders
+    $id_user = $_SESSION["id_user"]; //This will link the orders
+    $order_price = $_POST["total-cost"]; //Price of the total order
 
 
     if (isset($_COOKIE['dishes'])) {
@@ -35,6 +36,7 @@ if($_POST){
             $order_type_name = $booking["mode"];
 
             $database->insert("tb_order_registration",[
+                "session_id_user"=> $id_user,
                 "requested_dish_name"=> $requested_dish_name,
                 "order_date"=> $order_date,
                 "order_time"=> $order_time,
@@ -43,6 +45,7 @@ if($_POST){
             ]);
 
             $database->insert("tb_order_type",[
+                "order_id_user"=> $id_user,
                 "order_type_name"=> $order_type_name
             ]);
 
@@ -54,6 +57,11 @@ if($_POST){
     unset($_COOKIE["dishes"]);
     setcookie("dishes", " ", time() - 3600);
 
+    }else{
+
+        header("Location: forms.php");
+        //exit();
+    }
 }
 
 ?>
