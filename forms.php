@@ -19,7 +19,11 @@ require_once 'backend/database.php';
                     $_SESSION["fullname"] = $user[0]["fullname"];
                     $_SESSION["id_user"] = $user[0]["id_users"]; 
                     //var_dump($_SESSION["id_user"]);
-                    header("location: index.php");
+                    if(isset($_COOKIE['dishes'])){
+                        header("location: cart.php");
+                    }else{
+                        header("location: index.php");
+                    }
                 }else{
                     $message = "wrong username or password";
                 }

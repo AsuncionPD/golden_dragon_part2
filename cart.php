@@ -1,6 +1,29 @@
 <?php
 require_once './backend/database.php';
 
+/*Delete dish*/
+if (isset($_COOKIE['dishes'])) {
+
+    $updateCookie = false;
+    $data = json_decode($_COOKIE['dishes'], true);
+   
+    if(isset($_GET["booking"]) && $_GET["booking"] >= 0 && $data != null){
+
+        array_splice($data, $_GET["booking"], 1);
+        $updateCookie = true;
+    }
+        
+    $booking_details = $data;
+    
+    if($updateCookie) {
+        setcookie('dishes', json_encode($booking_details), time()+72000);
+        // Redireccionar a la misma página después de eliminar el plato
+        header("Location: cart.php");
+        exit();
+    }
+
+}
+
 $dishes_details = [];
 /*Create cookie*/
 if($_POST){
@@ -106,8 +129,7 @@ if (isset($_COOKIE['dishes'])) {
     <header>
         <?php
         include "./parts/top-nav.php";
-        ?>
-        
+        ?> 
     </header>
     
     <main>
@@ -139,8 +161,8 @@ if (isset($_COOKIE['dishes'])) {
                             echo "<td>" . $booking["mode"] . "</td>";
                             echo "<td>" . $booking["quantity"] . "</td>";
                             echo "<td>" . $booking["cost"] . "</td>";
-                            echo "<td><a class='links' href='dish.php?id=" . $booking["id"] . "'>Edit</a> <a class='links' href=''>Delete</a></td>";
-                        echo "</tr>";
+                            echo "<td><a class='links' href='dish.php?id=".$booking["id"]."&index=".$index."'>Edit</a> <a class='links' href='cart.php?booking=".$index."'>Delete</a></td>";
+                        echo "</tr>";   
                         }}else{
                             echo "There aren't orders";
                         }

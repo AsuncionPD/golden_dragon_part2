@@ -5,6 +5,12 @@ require_once 'backend/database.php';
 
 if($_POST){
 
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    if(isset($_SESSION["isLoggedIn"])){
+
     $requested_dish_name = "";
 
     //Individual time
@@ -54,6 +60,11 @@ if($_POST){
     unset($_COOKIE["dishes"]);
     setcookie("dishes", " ", time() - 3600);
 
+    }else{
+
+        header("Location: forms.php");
+        //exit();
+    }
 }
 
 ?>
