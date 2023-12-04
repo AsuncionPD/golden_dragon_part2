@@ -18,7 +18,8 @@ if($_POST){
     $order_quantity = "";
     $order_type_name = "";
     $id_user = $_SESSION["id_user"]; //This will link the orders
-    $order_price = $_POST["total-cost"]; //Price of the total order
+    $total_order_price = $_POST["total-cost"]; //Price of the total order
+    $order_price = 0;
 
 
     if (isset($_COOKIE['dishes'])) {
@@ -34,17 +35,22 @@ if($_POST){
             $order_time = $booking["time"];
             $order_quantity = $booking["quantity"];
             $order_type_name = $booking["mode"];
+            $order_price = $booking["cost"];
 
             $database->insert("tb_order_registration",[
+                "id_users"=> $id_user,
                 "session_id_user"=> $id_user,
+                "order_id_user"=> $id_user,
                 "requested_dish_name"=> $requested_dish_name,
                 "order_date"=> $order_date,
                 "order_time"=> $order_time,
-                "ordered_quantity"=> $order_quantity,
-                "order_price" => $order_price
+                "order_quantity"=> $order_quantity,
+                "order_price" => $order_price,
+                "total_order_price" => $total_order_price
             ]);
 
             $database->insert("tb_order_type",[
+                "id_users"=> $id_user,
                 "order_id_user"=> $id_user,
                 "order_type_name"=> $order_type_name
             ]);
