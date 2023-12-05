@@ -31,7 +31,7 @@ require_once './backend/database.php';
                 "id_users" => $id_user
             ]);
 
-            $message = "Excellent! The password was change";
+            $message = "Excellent! The password was changed";
 
             }
 

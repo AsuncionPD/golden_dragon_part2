@@ -136,7 +136,7 @@ if ($_POST) {
             <input type="hidden" name="id" value="<?php echo $item[0]["id_dish"]; ?>">
 
             <div class="form-items">
-            <h3>You're sure to delete this destination</h3>
+            <h3>Are you sure to delete this destination?</h3>
                 <input class="submit-btn" type="button" onclick="history.back();" value="Cancel">
             
                 <input class="submit-btn" type="submit" value="Delete">
