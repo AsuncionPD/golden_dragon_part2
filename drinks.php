@@ -18,6 +18,9 @@ $category = $database->get("tb_dish_category", "*", ["id_dish_category" => $cate
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mooli&display=swap" rel="stylesheet">
+    <!-- icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- icons -->
     <!-- google fonts -->
     <link rel="stylesheet" href="./css/main.css">
 
