@@ -40,7 +40,7 @@ if(isset($_SESSION)){
     <main>
         <section>
             <div class="table-container">
-            <h1 class="title-cart">Historial</h1>
+            <h1 class="title-cart">Orders Historial</h1>
             <?php
             for ($i = 1; $i <= $max_order_number; $i++) {
                 $orders = $database->select("tb_order_registration", [
@@ -99,7 +99,7 @@ if(isset($_SESSION)){
                              echo "<td>" . $order["order_price"] . "</td>";
                          echo "</tr>";   
                          }}else{
-                             echo "There aren't orders";
+                             echo "You haven't placed any orders yet";
                          }
                          echo "<tr><td><td><td><td><td><td 
                          class=''><h3>Total $". $order["total_order_price"] ."</h3></td><td></tr>"
