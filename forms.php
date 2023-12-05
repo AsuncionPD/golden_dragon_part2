@@ -116,6 +116,10 @@ require_once 'backend/database.php';
                         <div class="login-register">
                             <p>Don't have an account? <a href="javascript:void(0)" class="register-link">Sing In</a></p>
                         </div>
+                        <!--Admin-->
+                        <div class="login-register">
+                            <p>For workers <a href="admin/login.php" class="register-link">Click here</a></p>
+                        </div>
                         <p><?php echo $message; ?></p>
                         <input type="hidden" name="login" value="1">
                     </form>
