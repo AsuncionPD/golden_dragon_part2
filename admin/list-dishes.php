@@ -23,11 +23,42 @@ $items = $database->select("tb_dishes", "*");
 
 <body>
     <header>
-        <?php
-        include "./../parts/top-nav.php";
-        ?>
-    </header>
+        <div class="top-page">
+        <div class="img-logo"></div>
+        </div>
+        <nav class="top-nav">
+                <!--movile nav btn-->
+                <input class="mobile-check" type="checkbox">
+                <label class="mobile-btn">
+                    <span>
 
+                    </span>
+                </label>
+                <!--movile nav btn-->
+
+                <ul class="nav-list">
+                    <?php 
+                    if (session_status() == PHP_SESSION_NONE) {
+                        session_start();
+                    }
+                    if(isset($_SESSION["isLoggedIn"])){
+                        echo "<span class='login-icon'><i class='bx bxs-user-circle'></i></span>";
+                        echo "<li><a class='nav-list-link' href=''>".$_SESSION["fullname"]."</a></li>";
+                        echo "<li><a class='nav-list-link' href='../backend/logout.php'>Logout</a></li>";
+                        }else{
+                        echo "<li><a class='nav-list-link' href='./login.php'>Login</a></li>";
+                        }
+                    ?>
+                    <li><a class="nav-list-link" href="sign-in.php">Sign in</a></li>
+                    <li><a class="nav-list-link" href="../index.php">Home</a></li>
+                    <li><a class="nav-list-link" href="#">About</a></li>
+                    <li><a class="nav-list-link" href="#">Contact</a></li>
+                    <li><a class="nav-list-link" href="../search.php">Search</a></li>
+                    <li><a class="nav-list-link" href="../cart.php" id="cartIcon">Cart</a></li>
+                </ul>
+            </nav>
+    </header>
+    <p style="text-align: center;">Note: Cart and Profile will not display user information because you are in admin functionality.</p>
     <h1 class="title">Registered Dishes</h1>
     <table>
         <thead>
@@ -51,8 +82,10 @@ $items = $database->select("tb_dishes", "*");
             ?>
         </tbody>
     </table>
-
-
+    <footer class="footer">
+        <div class="footer-content"></div>
+    </footer>
+    <script>
 </body>
 
 </html>

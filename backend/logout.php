@@ -5,3 +5,4 @@
     //redirect to index page
     header("Location: ../index.php");
 ?>
+
