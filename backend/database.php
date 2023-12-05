@@ -12,4 +12,8 @@
         'username' => 'root',
         'password' => ''
     ]);
-?>
+
+    //Information to enter admin functionality
+    /*INSERT INTO tb_admin_users (admin_usr, admin_pwd) VALUES ('admin', '$2y$12$GKWDmW7DWmri7Njw9G1FP.5SYgYJpOIitrGn.7maWq9OoZj35sqzO');*/
+    /*Clave: 123*/
+?>  

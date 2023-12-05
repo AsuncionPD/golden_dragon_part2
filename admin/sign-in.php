@@ -5,32 +5,27 @@ require_once '../backend/database.php';
 
     if($_POST){
 
-        if(isset($_POST["login"])){
-
-            $admin_user = $database->select("tb_admin_users","*",[
+        if(isset($_POST["register"])){
+            //validate if user already registered
+            $validateUsername = $database->select("tb_admin_users","*",[
                 "admin_usr"=> $_POST["username"]
-            ]);      
+            ]);
 
-            if(count($admin_user) > 0){
-                //validate password
-
-                if(password_verify($_POST["password"], $admin_user[0]["admin_pwd"])){
-                    session_start();
-                    $_SESSION["isLoggedIn"] = true;
-                    $_SESSION["fullname"] = $admin_user[0]["admin_usr"];
-                    $_SESSION["id_admin_user"] = $admin_user[0]["id_admin_users"]; 
-                    header("location: list-dishes.php");
-                }else{
-                    $message = "wrong username or password";
-                }
+            if(count($validateUsername) > 0){
+                $message = "This username is already registered";
             }else{
-                $message = "wrong username or password";
+
+                $pass = password_hash($_POST["password"], PASSWORD_DEFAULT, ['cost' => 12]);
+
+                $database->insert("tb_admin_users",[
+                    "admin_usr"=> $_POST["username"],
+                    "admin_pwd"=> $pass,
+                ]);
+
             }
-
         }
-
+       
     }
-
 
 ?>
 
@@ -70,31 +65,22 @@ require_once '../backend/database.php';
 
     <ul class="nav-list">
         <?php 
-            if (session_status() == PHP_SESSION_NONE) {
-                session_start();
-            }
-            if(isset($_SESSION["isLoggedIn"])){
-                echo "<span class='login-icon'><i class='bx bxs-user-circle'></i></span>";
-                echo "<li><a class='nav-list-link' href=''>".$_SESSION["username"]."</a></li>";
-                echo "<li><a class='nav-list-link' href='./backend/logout.php'>Logout</a></li>";
-                }else{
-                echo "<li><a class='nav-list-link' href='../index.php'>Restaurant</a></li>";
-            }
+            echo "<li><a class='nav-list-link' href='list-dishes.php'>Back</a></li>";
          ?>
     </ul>
-</nav>
+    </nav>
     </header>
     <main class="main-content">
-        <div class="login-container-admin">
+        <div class="signIn-container">
             <!--<div class="text-content"></div>-->
             <div class="text-sci">
-                <h1>Happy to see you again<br><span>Admin</span></h1>
-                <p>Log in to continue helping us building this restaurant.</p>
+                <h1>Create a new session<br><span style="color: red";>Warning:</span></h1>
+                <p style="color: red";>Only admins can create new sessions. If you are not an authorized admin, please stop.</p>
             </div>
-        <div class="logreg-box-admin">
-            <div class="form-box-admin">
-                <form method="post" action="login.php">
-                        <h2>Login</h2>
+        <div class="logreg-box-signIn">
+            <div class="form-box-signIn">
+                <form method="post" action="sign-in.php">
+                        <h2>Sing in</h2>
                         <div class="input-box">
                             <span class="icon"><i class='bx bxs-user'></i></span>
                             <input id="username" type="text" name="username" required>
@@ -107,9 +93,9 @@ require_once '../backend/database.php';
                             <label for="password">Password</label>
                         </div>
 
-                        <input class="btn-sign-in" type="submit" value="Login">
+                        <input class="btn-sign-in" type="submit" value="Register">
                         <p><?php echo $message; ?></p>
-                        <input type="hidden" name="login" value="1">
+                        <input type="hidden" name="register" value="1">
                     </form>
                 </div>
             </div>
