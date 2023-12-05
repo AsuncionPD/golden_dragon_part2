@@ -20,13 +20,31 @@ if($_POST){
     $id_user = $_SESSION["id_user"]; //This will link the orders
     $total_order_price = $_POST["total-cost"]; //Price of the total order
     $order_price = 0;
-
+    $order_number = 0;
 
     if (isset($_COOKIE['dishes'])) {
 
         $data = json_decode($_COOKIE['dishes'], true);
         $booking_details = $data;
 
+        /*Numbers order to historial*/
+        $user = $database->select("tb_order_registration","*",[
+            "id_users"=> $id_user
+        ]);
+
+        if(empty($user)){
+            
+            $order_number = 1;
+
+        }else{
+            
+            $last_order = end($user);
+            $order_number = $last_order["number_order"];
+            $order_number++;
+        }
+         /*Numbers order to historial*/
+
+        //var_dump($order_number);
 
         foreach ($booking_details as $index => $booking) {
 
@@ -36,11 +54,14 @@ if($_POST){
             $order_quantity = $booking["quantity"];
             $order_type_name = $booking["mode"];
             $order_price = $booking["cost"];
+            $order_image = $booking["image"];
 
             $database->insert("tb_order_registration",[
                 "id_users"=> $id_user,
+                "number_order" => $order_number,
                 "session_id_user"=> $id_user,
                 "order_id_user"=> $id_user,
+                "order_image"=> $order_image,
                 "requested_dish_name"=> $requested_dish_name,
                 "order_date"=> $order_date,
                 "order_time"=> $order_time,
