@@ -108,7 +108,7 @@ require_once 'backend/database.php';
 
                         <div class="remember-forgot">
                             <label><input type="checkbox">Remember me</label>
-                            <a href="#">Forgot password?</a>
+                            <a href="forget-psw.php">Forgot password?</a>
                         </div>
 
                         <input class="btn-sign-in" type="submit" value="Login">

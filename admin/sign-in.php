@@ -65,7 +65,7 @@ require_once '../backend/database.php';
 
     <ul class="nav-list">
         <?php 
-            echo "<li><a class='nav-list-link' href='list-dishes.php'>Back</a></li>";
+            echo "<li><a class='nav-list-link' href='list-dishes.php'>Return to list dishes</a></li>";
          ?>
     </ul>
     </nav>

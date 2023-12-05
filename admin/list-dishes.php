@@ -58,7 +58,7 @@ $items = $database->select("tb_dishes", "*");
                 </ul>
             </nav>
     </header>
-    <p style="text-align: center;">Note: Cart and Profile will not display user information because you are in admin functionality.</p>
+    <p style="text-align: center;">Note: Cart can't submit to database and Profile will not display user information because you are in admin functionality.</p>
     <h1 class="title">Registered Dishes</h1>
     <table>
         <thead>
