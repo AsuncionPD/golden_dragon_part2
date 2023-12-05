@@ -164,7 +164,7 @@ if (isset($_COOKIE['dishes'])) {
                             echo "<td><a class='links' href='dish.php?id=".$booking["id"]."&index=".$index."'>Edit</a> <a class='links' href='cart.php?booking=".$index."'>Delete</a></td>";
                         echo "</tr>";   
                         }}else{
-                            echo "There aren't orders";
+                            echo "There are no orders yet";
                         }
                         echo "<tr><td><td><td><td><td><td><td 
                         class=''><h3>Total $". $total_cost ."</h3></td><td></tr>";

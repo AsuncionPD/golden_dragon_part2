@@ -84,6 +84,8 @@ if ($_POST) {
                         href="javascript:void(0)">General</a>
                         <a class="list-group-item change-password-link"
                         href="javascript:void(0)">Change password</a>
+                        <a class="list-group-item change-password-link"
+                        href="historial.php">Orders Historial</a>
                     </div>
                     <div class="tab-content">
                         <div class="form-box general" id="general">
